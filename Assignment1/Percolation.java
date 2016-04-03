@@ -64,7 +64,7 @@ public class Percolation {
         bottom = N*N+1;
         for (int i = 0; i < N; i++) {
             unionFind.union(i, top);
-            //unionFind.union(i+N*(N-1), bottom);
+            unionFind.union(i+N*(N-1), bottom);
         }
 
     }
@@ -72,10 +72,10 @@ public class Percolation {
     private boolean isInBound(int i, int j) {
         return !(i <= 0 || i > dim || j <= 0 || j > dim);
     }
-    private void unionBottom(int idx, int i) {
-        if (i == dim) {
-            unionFind.union(idx, bottom);
-        }
+    // private void unionBottom(int idx, int i) {
+    //     if (i == dim) {
+    //         unionFind.union(idx, bottom);
+    //     }
        // open site (row i, column j) if it is not open already
     }
     public void open(int i, int j) {
@@ -88,7 +88,7 @@ public class Percolation {
             numOpened++;
             // System.out.println("site "+i+j+" got opened");
             grids[i][j] = true;
-            unionBottom(idx, i);
+            // unionBottom(idx, i);
             // check (i-1,j) (i+1,j) (i,j-1) (i,j+1), if open, connect
             if (isInBound(i-1, j)) {
                 if (isOpen(i-1, j)) {
@@ -98,7 +98,7 @@ public class Percolation {
             if (isInBound(i+1, j)) {
                 if (isOpen(i+1, j)) {
                     unionFind.union(idx, idx+dim);
-                    unionBottom(idx, i+1);
+                    // unionBottom(idx, i+1);
 
                 }
             }
