@@ -4,6 +4,30 @@
 		"selected_items":
 		[
 			[
+				"m",
+				"main	method (main)"
+			],
+			[
+				"arg",
+				"arg_float"
+			],
+			[
+				"for",
+				"fore	for (each)"
+			],
+			[
+				"MIN",
+				"min	Matlab method"
+			],
+			[
+				"sy",
+				"System"
+			],
+			[
+				"bee",
+				"beerNum"
+			],
+			[
 				"pr",
 				"println"
 			],
@@ -299,14 +323,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "src/Percolation.java",
-			"settings":
-			{
-				"buffer_size": 6756,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -387,37 +403,29 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 375.0,
-		"last_filter": "inst",
+		"height": 392.0,
+		"last_filter": "in",
 		"selected_items":
 		[
 			[
-				"inst",
+				"in",
 				"Package Control: Install Package"
 			],
 			[
-				"git",
-				"Git: Commit"
-			],
-			[
-				"remov",
-				"Package Control: Remove Package"
-			],
-			[
 				"remo",
-				"BracketHighlighter: Remove Brackets"
-			],
-			[
-				"git:comm",
-				"Git: Commit"
-			],
-			[
-				"git:a",
-				"Git: Status"
+				"Package Control: Remove Package"
 			],
 			[
 				"ins",
 				"Package Control: Install Package"
+			],
+			[
+				"INS",
+				"Package Control: Install Package"
+			],
+			[
+				"Snippet: hi",
+				"Snippet: while"
 			],
 			[
 				"dis",
@@ -456,7 +464,7 @@
 				"Package Control: Add Repository"
 			]
 		],
-		"width": 579.0
+		"width": 593.0
 	},
 	"console":
 	{
@@ -477,19 +485,47 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/shengzhang/Desktop/Projects/Learning/Algorithm/Coursera/algs4partI-010/Assignment/Program_Assignment/Assignment1",
-		"/Users/shengzhang/Desktop/Projects/Learning/Algorithm/Coursera/algs4partI-010/Assignment/Program_Assignment/Assignment1/src"
+		"/Users/shengzhang/Desktop/Projects/Learning/Algorithm/Coursera/algs4partI-010/Assignment/Program_Assignment/Assignment2",
+		"/Users/shengzhang/Desktop/Projects/Learning/Algorithm/Coursera/algs4partI-010/Assignment/Program_Assignment/Assignment2/src"
 	],
 	"file_history":
 	[
+		"/Users/shengzhang/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/shengzhang/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/shengzhang/Desktop/Projects/Learning/Algorithm/Coursera/algs4partI-010/Assignment/Program_Assignment/Assignment2/src/Test.java",
+		"/Users/shengzhang/Desktop/Projects/Learning/Algorithm/Coursera/algs4partI-010/Assignment/Program_Assignment/Assignment2/src/Test2.java",
+		"/Users/shengzhang/Desktop/Projects/Learning/Algorithm/Coursera/algs4partI-010/Assignment/Program_Assignment/Assignment2/untitled.sublime-project",
+		"/Users/shengzhang/Desktop/Projects/RBRR/pocy2_noah/fpgaDriver/fpgaDeviceDefines.h",
+		"/Users/shengzhang/Desktop/Projects/RBRR/pocy2_noah/fpgaApplications/fpgaCtl/fpgaFunctions.cpp",
+		"/Users/shengzhang/Desktop/Projects/RBRR/pocy2_noah/fpgaApplications/fpgaShared/fpgaShared.h",
+		"/Users/shengzhang/Desktop/Projects/RBRR/pocy2_noah/fpgaApplications/fpgaShared/fpgaShared.cpp",
+		"/Users/shengzhang/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
 		"/Users/shengzhang/Library/Application Support/Sublime Text 3/Packages/Default/Default (OSX).sublime-keymap",
-		"/Users/shengzhang/Desktop/Projects/Learning/Algorithm/Coursera/algs4partI-010/Assignment/Program_Assignment/Assignment1/Percolation.java",
-		"/Users/shengzhang/Library/Application Support/Sublime Text 3/Packages/Javatar/Default (OSX).sublime-keymap",
+		"/Users/shengzhang/Desktop/Projects/RBRR/pocy2_noah/fpgaApplications/fpgaCtl/fpga.swift",
+		"/Users/shengzhang/Desktop/Projects/RBRR/pocy2_noah/fpgaApplications/fpgaCtl/frameUtils.cpp",
+		"/Users/shengzhang/Desktop/Projects/RBRR/pocy2_noah/fpgaApplications/fpgaCtl/fpgaFunctions.h",
+		"/Users/shengzhang/Desktop/Projects/RBRR/pocy2_noah/fpgaDriver/fpgaDeviceShared.h",
+		"/Users/shengzhang/Desktop/Projects/RBRR/pocy2.noah/fpgaApplications/fpgaCtl/fpgaFunctions.cpp",
+		"/Users/shengzhang/Desktop/Projects/RBRR/pocy2.noah/degamma.txt",
+		"/Users/shengzhang/Desktop/Projects/RBRR/pocy2.noah/caInput.txt",
+		"/Users/shengzhang/Desktop/Projects/RBRR/pocy2.noah/caOutput.txt",
+		"/Users/shengzhang/Desktop/Projects/RBRR/pocy2.noah/ca.txt",
+		"/Users/shengzhang/Desktop/Projects/RBRR/pocy2.noah/fpgaDriver/fpgaDevice.cpp",
+		"/Users/shengzhang/Desktop/Projects/RBRR/pocy2.noah/alg.m",
+		"/Users/shengzhang/Desktop/fpgaPackage 2/images.txt",
+		"/Users/shengzhang/Desktop/Projects/Learning/Java/COS126/HiFour.java",
+		"/Users/shengzhang/Desktop/Projects/Learning/Java/COS126/Ordered.java",
+		"/Users/shengzhang/Desktop/Projects/Learning/Java/HeadFirstJava/BeerSong.java",
+		"/Users/shengzhang/Desktop/Projects/Dithering/00_Dither_4bits_GIT_REPO/MirageDither.m",
+		"/Users/shengzhang/Desktop/Projects/Dithering/00_Dither_4bits_GIT_REPO/.git/COMMIT_EDITMSG",
+		"/Users/shengzhang/Desktop/Projects/Learning/Java/HeadFirstJava/Exb.java",
+		"/Users/shengzhang/Desktop/Projects/Learning/Java/HeadFirstJava/test.m",
+		"/Users/shengzhang/Desktop/Projects/Learning/Java/Thinking_in_Java/TIJ4-code/object/Documentation1.java",
+		"/Users/shengzhang/Desktop/Projects/Learning/Java/Thinking_in_Java/TIJ4-code/object/ShowProperties.java",
+		"/Users/shengzhang/Desktop/Projects/Dithering/00_Dither_4bits_GIT_REPO/APT_seq",
 		"/Users/shengzhang/Desktop/Projects/Learning/Java/TestBed.java",
 		"/Users/shengzhang/Desktop/Projects/Learning/Algorithm/Assignment1/Percolation.java",
 		"/Users/shengzhang/Library/Application Support/Sublime Text 3/Packages/User/Java.sublime-build",
-		"/Users/shengzhang/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
-		"/Users/shengzhang/Desktop/Projects/Dithering/00_Dither_4bits_GIT_REPO/APT_seq",
 		"/Users/shengzhang/Desktop/Projects/Learning/Java/untitled.sublime-project",
 		"/Users/shengzhang/Library/Application Support/Sublime Text 3/Packages/Alignment/Default (OSX).sublime-keymap",
 		"/Users/shengzhang/Library/Application Support/Sublime Text 3/Packages/Alignment/Base File.sublime-settings",
@@ -497,7 +533,6 @@
 		"/Users/shengzhang/Desktop/Projects/Conferences/GTC_2016/RTG_VR",
 		"/Users/shengzhang/Desktop/Projects/Conferences/GTC_2016/Edu_training_tutorials",
 		"/Users/shengzhang/Desktop/Projects/Conferences/GTC_2016/Mon_Tue",
-		"/Users/shengzhang/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
 		"/Users/shengzhang/Desktop/Projects/Conferences/GTC_2016/Real_time_graphics_VR",
 		"/Users/shengzhang/Desktop/Projects/Conferences/GTC_2016/keynote_featured",
 		"/Users/shengzhang/Desktop/Projects/Conferences/GTC_2016/my.ics",
@@ -509,7 +544,6 @@
 		"/Users/shengzhang/Desktop/OmniFocus.txt",
 		"/Users/shengzhang/Desktop/Projects/Review/Done_Exported0322.txt",
 		"/Users/shengzhang/Desktop/orb.txt",
-		"/Users/shengzhang/Desktop/fpgaPackage 2/images.txt",
 		"/Users/shengzhang/Desktop/fpgaPackage/copy",
 		"/Users/shengzhang/Desktop/Projects/Learning/CUDA/Udacity_Class/cs344/HW4/student_func.cu",
 		"/Users/shengzhang/Desktop/Projects/Learning/CUDA/Udacity_Class/cs344/HW3/student_func.cu",
@@ -520,7 +554,6 @@
 		"/Users/shengzhang/Desktop/Projects/Dithering/lfsr.c",
 		"/Users/shengzhang/Desktop/Projects/CUDA/Udacity_Class/cs344/HW3/student_func.cu",
 		"/Users/shengzhang/Library/Application Support/Sublime Text 3/Packages/User/C.sublime-settings",
-		"/Users/shengzhang/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
 		"/Users/shengzhang/Library/Application Support/Sublime Text 3/Packages/User/JSON.sublime-settings",
 		"/Users/shengzhang/Library/Application Support/Sublime Text 3/Packages/JsFormat/JsFormat.sublime-settings",
 		"/Users/shengzhang/Desktop/supplement/Supplemental-SourceCode/LightFieldFactorization-Supplement/factorizeLightField.m",
@@ -558,6 +591,7 @@
 		"height": 93.0,
 		"where_history":
 		[
+			""
 		]
 	},
 	"find_state":
@@ -565,6 +599,108 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"alt+1",
+			"rbrr_on",
+			"constantSubframes",
+			"fp_RBRR",
+			"fp_sub",
+			"rbrr",
+			"constantSubframes",
+			"rbrr",
+			"displayframeready",
+			"fp_sub",
+			"subframe",
+			"subframes",
+			"displayprc",
+			"displayframes",
+			"fp_subframes",
+			"subframe",
+			"CA_i",
+			"frame_du",
+			"displaysubframes",
+			"DisplayFrameReady",
+			"displaySubframes",
+			"frame_info_t",
+			"displaySubframes",
+			"fi",
+			"frame_control0",
+			"subframe",
+			"fp_subFrames",
+			"seek_set",
+			"fp_subframe",
+			"fopen",
+			"subframe",
+			"fopen",
+			"rbrr",
+			"fopen",
+			"calogoutputfp",
+			"caInput",
+			"caLogInputFp",
+			"rbrr",
+			"caLogInput",
+			"rbrr",
+			"caLogInput",
+			"caLogInputFileName",
+			"setRBRRInputFileName",
+			"caLogInputFileName",
+			"caLogInput",
+			"setCaLog",
+			"caInput",
+			"subframe",
+			"tpio_output_control_lut",
+			"writereg",
+			"write_reg",
+			"TPIO_OUTPUT_CONTROL",
+			"writereg",
+			"TPIO_OUTPUT_CONTROL",
+			"goe",
+			"setUpdateLines",
+			"FPGA_STATUS_ILLEGAL_COLORS",
+			"LC_BUILD",
+			"goe",
+			" ti ",
+			"ti",
+			"transfer_info_t",
+			"dither_tables",
+			"DisplayFrame",
+			"DisplayFrameQ",
+			"DisplayFrameReady",
+			"DisplayFrame",
+			"printf(\"",
+			"DisplayFrame()",
+			"DisplayFrame",
+			"TransferFrame",
+			"vblank",
+			"packet",
+			"polarity",
+			"z_inversion",
+			"cdic",
+			"frame_height",
+			"pol",
+			"CDIC_OUTPUTS0",
+			"cdic",
+			"pol",
+			"kWord",
+			"WriteReg",
+			"CDIC_OUTPUTS0",
+			"num_cdic",
+			"goe",
+			"I2C_STATUS_DATA_NACK",
+			"fpgaOpen",
+			"fpga_status_t",
+			"fillFramesPThread",
+			"FRAME_DIMENSIONS",
+			"altern",
+			"fillFramesPThread",
+			"IOConnectUnmapMemory64",
+			"fpgaClose",
+			"oe",
+			"DisplayFrame",
+			"int",
+			"word",
+			"beer",
+			"{\n",
+			"beer",
 			"project",
 			"Bank",
 			"{\n",
@@ -590,22 +726,7 @@
 			"extern",
 			"printf",
 			"h_hist_out",
-			"sdata",
-			"malloc",
-			"kernal",
-			"int",
-			"simple_vbo",
-			"launch_kernel",
-			"runcuda",
-			"glutmainloop",
-			"<<<",
-			"launch_kernel",
-			"launch_kernel\n",
-			"launch_k\n",
-			"initGL",
-			"recomb",
-			"recombine",
-			"redChannel"
+			"sdata"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -613,6 +734,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"rbrrON",
+			"FPGA_STATUS_ILLEGAL_COLORS",
 			"",
 			"_",
 			"",
@@ -627,104 +750,14 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "src/Percolation.java",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6756,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								256,
-								256
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content"
-							],
-							"syntax": "Packages/Java/Java.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 111.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 23.0
+		"height": 25.0
 	},
 	"input":
 	{
@@ -759,17 +792,13 @@
 	},
 	"output.find_results":
 	{
-		"height": 0.0
-	},
-	"output.git":
-	{
-		"height": 114.0
+		"height": 238.0
 	},
 	"pinned_build_system": "Packages/User/Java.sublime-build",
-	"project": "Assignment1.sublime-project",
+	"project": "ps2.sublime-project",
 	"replace":
 	{
-		"height": 42.0
+		"height": 46.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -796,12 +825,16 @@
 	},
 	"select_symbol":
 	{
-		"height": 0.0,
+		"height": 375.0,
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"",
+				"fpgaClose"
+			]
 		],
-		"width": 0.0
+		"width": 378.0
 	},
 	"selected_group": 0,
 	"settings":
@@ -811,7 +844,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 241.0,
+	"side_bar_width": 325.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
