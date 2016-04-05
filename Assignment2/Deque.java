@@ -1,8 +1,8 @@
 import java.util.Iterator;
-import java.lang.NullPointerException;
+// import java.lang.NullPointerException;
 import java.util.NoSuchElementException;
 import edu.princeton.cs.algs4.StdOut;
-import java.lang.UnsupportedOperationException;
+// import java.lang.UnsupportedOperationException;
 
 
 // Corner cases. Throw a java.lang.NullPointerException if the client attempts
@@ -168,7 +168,7 @@ public class Deque<Item> implements Iterable<Item> { //mem=16N
         // StdOut.println(dec.removeFirst());
         // StdOut.println(dec.removeLast());
 
-        Iterator<Integer> i = dec.iterator();
+        // Iterator<Integer> i = dec.iterator();
 
         // while (i.hasNext()) {
         //     StdOut.print(i.next());
