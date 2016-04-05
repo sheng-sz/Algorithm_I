@@ -50,6 +50,9 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
    }
    // remove and return a random item
    public Item dequeue() {
+      if (numItems == 0)
+         throw new NoSuchElementException("trying to dequeue from empty Q");
+
       int randPtr = StdRandom.uniform(numItems);
       Item temp = q[randPtr+first];
       q[randPtr+first] = q[first];
@@ -90,6 +93,9 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
    // return (but do not remove) a random item
    public Item sample() {
+      if (numItems == 0)
+         throw new NoSuchElementException("trying to sample from empty Q");
+
       int randPtr = StdRandom.uniform(numItems);
       return q[first+randPtr];
    }
@@ -99,10 +105,10 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
    private class ListIterator implements Iterator<Item> {
       int[] seq;
-
-      int current = 0;
+      int current;
 
       public ListIterator(){
+         current = 0;
          seq = new int[numItems];
 
          for (int i = 0; i < numItems; i++) {
@@ -111,13 +117,15 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
          StdRandom.shuffle(seq);
       }
-      public boolean hasNext() {return current == numItems - 1; }
+
+      public boolean hasNext() {return !(current == numItems); }
+
       public void remove() {
          throw new UnsupportedOperationException("remove not supported");
       }
+
       public Item next(){
          // StdOut.print("test");
-
          if (current == numItems)
             throw new NoSuchElementException("no more items");
          return q[seq[current++]];
@@ -131,6 +139,11 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
       for (int i = 1; i < 8; i++) {
          rq.enqueue(i);
       }
+      for (int i = 1; i < 8; i++)
+         rq.dequeue();
+      for (int i = 1; i < 8; i++) {
+         rq.enqueue(i*5);
+      }
 
       Iterator<Integer> q0 = rq.iterator();
       // // Iterator<Integer> q1 = rq.iterator();
@@ -143,16 +156,21 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
       // StdOut.println("next" + q0.next());
       // StdOut.println("next" + q0.next());
 
+      int x = 0;
 
       for ( Integer item : rq) {
-         StdOut.print(item);
-      }
-      StdOut.println("");
-
-      for (int item : rq) {
          StdOut.print(item+"-");
       }
       StdOut.println("");
+
+      for (Integer item : rq) {
+         StdOut.print(item+"-");
+      }
+      StdOut.println("");
+
+      for (int i = 1; i < 8; i++)
+         StdOut.println("sample " + rq.sample());
+
 
       // for (int i = 1; i < 8; i++)
          // rq.dequeue();
