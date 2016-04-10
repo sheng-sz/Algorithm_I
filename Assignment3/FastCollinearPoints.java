@@ -1,6 +1,6 @@
 import java.util.Arrays;
 import edu.princeton.cs.algs4.StdDraw;
-import edu.princeton.cs.algs4.StdIn;
+// import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.In;
 
@@ -9,12 +9,6 @@ public class FastCollinearPoints {
     private LineSegment[] ls;
     // finds all line segments containing 4 or more points
 
-    private void printPoints(Point[] points) {
-        for (Point tp : points ) {
-            StdOut.print(tp.toString());
-        }
-        StdOut.println();
-    }
 
     public FastCollinearPoints(Point[] points) {
 
@@ -25,24 +19,27 @@ public class FastCollinearPoints {
                 throw new NullPointerException("Brute force constructor point == null");
              }
          } 
+        Point[] mypoints = Arrays.copyOf(points, points.length);
 
         numSeg = 0;
-        ls = new LineSegment[points.length - 1];
-        double[] slope = new double[points.length - 1];
+        ls = new LineSegment[mypoints.length - 1];
         int next;
-        Arrays.sort(points);
+
+        Arrays.sort(mypoints);
+        for (int i = 0; i < mypoints.length-1; i++) {
+            if (mypoints[i].slopeTo(mypoints[i+1]) == Double.NEGATIVE_INFINITY) {
+                throw new IllegalArgumentException("repeated point");
+            }
+        }
+
         // printPoints(points);
 
-        for (int i = 0; i < points.length-3; i++) {
+        for (int i = 0; i < mypoints.length-3; i++) {
             // StdOut.println(i+points[i].toString());
             // next = i+2;
             next = i;
-            Arrays.sort(points, i+1, points.length, points[i].slopeOrder());
-        // printPoints(points);
-
-
-            if (points[i].slopeTo(points[i+1]) == Double.NEGATIVE_INFINITY)
-                throw new IllegalArgumentException("repeated point");
+            Arrays.sort(mypoints, i+1, mypoints.length, mypoints[i].slopeOrder());
+            // printPoints(mypoints);
 
             // while(points[i].slopeTo(points[next-1]) == points[i].slopeTo(points[next]) 
             //         && points[i].slopeTo(points[next]) == points[i].slopeTo(points[next+1])) {
@@ -50,9 +47,9 @@ public class FastCollinearPoints {
             //     if (next == points.length-1) break;
             // }
 
-            for (int j = i+1; j< points.length-2; j++) {
-                if (points[i].slopeTo(points[j]) == points[i].slopeTo(points[j+1])
-                    && points[i].slopeTo(points[j+1]) == points[i].slopeTo(points[j+2])) {
+            for (int j = i+1; j < mypoints.length-2; j++) {
+                if (mypoints[i].slopeTo(mypoints[j]) == mypoints[i].slopeTo(mypoints[j+1])
+                    && mypoints[i].slopeTo(mypoints[j+1]) == mypoints[i].slopeTo(mypoints[j+2])) {
                     next = j+2;
                     // StdOut.println("ijnext"+ i+"-"+j+"-"+next+points[next].toString());
                 } else {
@@ -62,12 +59,18 @@ public class FastCollinearPoints {
             }
 
             if (next != i)
-                ls[numSeg++] = new LineSegment(points[i], points[next]);
-            Arrays.sort(points, i+1, points.length);
+                ls[numSeg++] = new LineSegment(mypoints[i], mypoints[next]);
 
+            Arrays.sort(mypoints, i+1, mypoints.length);
         }
     }
 
+    private void printPoints(Point[] points) {
+        for (Point tp : points) {
+            StdOut.print(tp.toString());
+        }
+        StdOut.println();
+    }
     // the number of line segments
     public int numberOfSegments() {
         return numSeg;

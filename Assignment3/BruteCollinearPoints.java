@@ -1,5 +1,5 @@
 import edu.princeton.cs.algs4.StdDraw;
-import edu.princeton.cs.algs4.StdIn;
+// import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.In;
 import java.util.Arrays;
@@ -19,20 +19,22 @@ public class BruteCollinearPoints {
              }
          } 
 
+        Point[] mypoints = Arrays.copyOf(points, points.length);
+
         numSeg = 0;
         // StdOut.println(points.length);
-        Arrays.sort(points);
+        Arrays.sort(mypoints);
 
-        ls = new LineSegment[points.length - 1];
-        for (int i = 0; i < points.length; i++) {
-            for (int j = i + 1; j < points.length; j++) {
-                if (points[i].slopeTo(points[j]) == Double.NEGATIVE_INFINITY)
+        ls = new LineSegment[mypoints.length - 1];
+        for (int i = 0; i < mypoints.length; i++) {
+            for (int j = i + 1; j < mypoints.length; j++) {
+                if (mypoints[i].slopeTo(mypoints[j]) == Double.NEGATIVE_INFINITY)
                     throw new IllegalArgumentException("repeated point");
-                for (int k = j + 1; k < points.length; k++ ) {
-                    if (points[i].slopeTo(points[j]) == points[j].slopeTo(points[k])) {
-                        for (int l = k + 1; l < points.length; l++ ) {
-                            if (points[j].slopeTo(points[k]) == points[k].slopeTo(points[l])) {
-                                ls[numSeg++] = new LineSegment(points[i], points[l]);
+                for (int k = j + 1; k < mypoints.length; k++) {
+                    if (mypoints[i].slopeTo(mypoints[j]) == mypoints[j].slopeTo(mypoints[k])) {
+                        for (int l = k + 1; l < points.length; l++) {
+                            if (mypoints[j].slopeTo(mypoints[k]) == mypoints[k].slopeTo(mypoints[l])) {
+                                ls[numSeg++] = new LineSegment(mypoints[i], mypoints[l]);
                             }
                         }
                     }
@@ -48,7 +50,7 @@ public class BruteCollinearPoints {
 // the line segments
     public LineSegment[] segments() {
         LineSegment[] lsout = new LineSegment[numSeg];
-        for (int i = 0; i < numSeg; i++ ) {
+        for (int i = 0; i < numSeg; i++) {
             lsout[i] = ls[i];
         }
         return lsout;
