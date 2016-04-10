@@ -11,11 +11,11 @@ public class Subset {
             rq.enqueue(item);
         }
 
-        StdOut.println(rq.size());
+        // StdOut.println(rq.size());
 
         int N = Integer.parseInt(args[0]);
-        for (int i = 0; i < N; i++ ) {
-            StdOut.print(rq.dequeue());
+        for (int i = 0; i < N; i++) {
+            StdOut.println(rq.dequeue());
         }
     }
 }

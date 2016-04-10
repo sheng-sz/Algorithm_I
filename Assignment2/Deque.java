@@ -27,9 +27,9 @@ public class Deque<Item> implements Iterable<Item> { //mem=16N
     private int numNodes; // mem=32N
 
     private class Node { // mem=8
-        Item content;
-        Node next;
-        Node previous;
+        private Item content;
+        private Node next;
+        private Node previous;
     }
 
     // construct an empty deque
@@ -54,12 +54,18 @@ public class Deque<Item> implements Iterable<Item> { //mem=16N
         if (item == null)
             throw new java.lang.NullPointerException("trying to insert null item");
 
-        Node oldfirst = first;
-        first = new Node();
-        first.content = item;
-        first.next = oldfirst;
-        first.previous = null;
-        if (size()==0) last = first;
+        Node newfirst = new Node();
+        newfirst.next = first;
+        newfirst.previous = null;
+        newfirst.content = item;
+
+        if (size() == 0) {
+            first = newfirst;
+            last = first;
+        } else {
+            first.previous = newfirst;
+            first = newfirst;
+        }
 
         numNodes++;
     }
@@ -73,9 +79,16 @@ public class Deque<Item> implements Iterable<Item> { //mem=16N
         newlast.content = item;
         newlast.next = null;
         newlast.previous = last;
-        last.next = newlast;
-        last = newlast;
-        if (size()==0) first = last;
+        if (size() == 0) {
+            last = newlast;
+            first = last;
+        }
+        else {
+            last.next = newlast;
+            last = newlast;
+        }
+
+        // if (size() == 1) first.next = last;
         numNodes++;
 
     }
@@ -148,22 +161,25 @@ public class Deque<Item> implements Iterable<Item> { //mem=16N
         Deque<Integer> dec = new Deque<Integer>();
         StdOut.printf("%s,%d\n", dec.isEmpty(), dec.size());
 
+
         dec.addFirst(1);
         dec.addFirst(2);
         dec.addFirst(3);
         dec.addFirst(4);
         dec.addLast(5);
+        dec.addLast(6);
+        dec.addLast(7);
+        dec.removeLast();
+        dec.removeLast();
         dec.removeLast();
         dec.removeFirst();
         dec.removeFirst();
         dec.removeFirst();
         dec.removeFirst();
-
         dec.addFirst(1);
-        // dec.addFirst(2);
-        // dec.addFirst(3);
-        dec.addFirst(4);
         dec.addLast(5);
+        dec.addLast(7);
+
 
         // StdOut.println(dec.removeFirst());
         // StdOut.println(dec.removeLast());

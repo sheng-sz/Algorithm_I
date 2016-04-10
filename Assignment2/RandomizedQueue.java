@@ -1,8 +1,7 @@
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
-import java.lang.UnsupportedOperationException;
+import edu.princeton.cs.algs4.StdRandom;
 import java.util.NoSuchElementException;
-import java.lang.NullPointerException;
 import java.util.Iterator;
 
 // Corner cases. The order of two or more iterators to the same randomized queue
@@ -17,10 +16,10 @@ import java.util.Iterator;
 
 public class RandomizedQueue<Item> implements Iterable<Item> {
 // public class RandomizedQueue<Item> {
-
+   private int debug = 0;
    private int first; // mem=4N
    private int last; // mem=4N
-   public Item[] q;
+   private Item[] q;
    private int numItems; // mem=32N
 
    // construct an empty randomized queue
@@ -43,10 +42,13 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
       if (item == null)
          throw new NullPointerException("null item");
 
-      if (numItems == q.length/2) expandQ();
+      if (last == q.length || last == 0) expandQ();
       q[last++] = item;
       numItems++;
-      StdOut.println("enqueue val "+item + " -> index " + (last-1) + " | f/l = " + first + "/" + last + " | Q.len = " + q.length + " | N = " + numItems);
+      if (debug == 1)
+         StdOut.println("enqueue val "+item + " -> index " + (last-1) +
+            " | f/l = " + first + "/" + last + " | Q.len = " + q.length +
+             " | N = " + numItems);
    }
    // remove and return a random item
    public Item dequeue() {
@@ -56,22 +58,23 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
       int randPtr = StdRandom.uniform(numItems);
       Item temp = q[randPtr+first];
       q[randPtr+first] = q[first];
+      q[first] = null;
       first++;
       numItems--;
-      if ( (numItems > 0 && numItems == q.length/4) || numItems ==0) shrinkQ();
+      if ((numItems > 0 && numItems == q.length/4) || numItems == 0) shrinkQ();
 
-      StdOut.println("dequeue index " + randPtr + " -> val " + temp + " | f/l = " + first + "/" + last + " | Q.len = " + q.length + " | N = " + numItems);
+      if (debug == 1)
+         StdOut.println("dequeue index " + randPtr + " -> val " + temp +
+            " | f/l = " + first + "/" + last + " | Q.len = " + q.length +
+            " | N = " + numItems);
 
       return temp;
    }
 
    private void expandQ() {
       Item[] newQ = (Item[]) new Object[q.length * 2];
-      for (int i = 0; i < q.length*2; i++ ) {
-         if (i < numItems)
+      for (int i = 0; i < numItems; i++) {
             newQ[i] = q[first + i];
-         else
-            newQ[i] = null;
       }
       first = 0;
       last = numItems;
@@ -80,11 +83,8 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
    private void shrinkQ() {
       Item[] newQ = (Item[]) new Object[q.length/2];
-      for (int i = 0; i< q.length/2; i++) {
-         if (i < numItems)
+      for (int i = 0; i < numItems; i++) {
             newQ[i] = q[first + i];
-         else
-            newQ[i] = null;
       }
       first = 0;
       last = numItems;
@@ -104,48 +104,63 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
    public Iterator<Item> iterator() { return new ListIterator(); }
 
    private class ListIterator implements Iterator<Item> {
-      int[] seq;
-      int current;
+      private int[] seq;
+      private int current;
+      private int l;
 
-      public ListIterator(){
-         current = 0;
+      public ListIterator() {
+         current = first;
          seq = new int[numItems];
 
          for (int i = 0; i < numItems; i++) {
-            seq[i] = i;
+            seq[i] = first + i;
          }
 
          StdRandom.shuffle(seq);
       }
 
-      public boolean hasNext() {return !(current == numItems); }
+      public boolean hasNext() { return !(current == last); }
 
       public void remove() {
          throw new UnsupportedOperationException("remove not supported");
       }
 
-      public Item next(){
-         // StdOut.print("test");
-         if (current == numItems)
+      public Item next() {
+         if (debug == 1)
+            StdOut.printf("current %d, first %d, last %d\n",
+               current, first, last);
+         if (current == last)
             throw new NoSuchElementException("no more items");
-         return q[seq[current++]];
+         return q[seq[current++ - first]];
       }
    }
    // unit testing
    public static void main(String[] args) {
 
       RandomizedQueue<Integer> rq = new RandomizedQueue<Integer>();
-      int N = 8;
-      for (int i = 1; i < 8; i++) {
-         rq.enqueue(i);
-      }
-      for (int i = 1; i < 8; i++)
-         rq.dequeue();
-      for (int i = 1; i < 8; i++) {
-         rq.enqueue(i*5);
-      }
+      // int N = 10;
+      // for (int i = 0; i < N; i++) {
+      //    rq.enqueue(i);
+      // }
+      // StdOut.println("---");
 
-      Iterator<Integer> q0 = rq.iterator();
+      // N = 100;
+      // for (int i = 0; i < N; i++) {
+      //    if (StdRandom.uniform(10) > 3)
+      //       rq.enqueue(StdRandom.uniform(10));
+      //    else
+      //       rq.dequeue();
+      // }
+      rq.enqueue(5);
+      rq.dequeue();
+      rq.enqueue(5);
+
+
+      // for (int i = 1; i < 8; i++) {
+      //    rq.enqueue(i*5);
+      // }
+
+      // Iterator<Integer> q0 = rq.iterator();
       // // Iterator<Integer> q1 = rq.iterator();
       // StdOut.println("next" + q0.next());
       // StdOut.println("next" + q0.next());
@@ -158,18 +173,18 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
       int x = 0;
 
-      for ( Integer item : rq) {
-         StdOut.print(item+"-");
+      for (int item : rq) {
+         StdOut.println(item);
       }
-      StdOut.println("");
+      // StdOut.println("");
 
-      for (Integer item : rq) {
-         StdOut.print(item+"-");
-      }
-      StdOut.println("");
+      // for (int item : rq) {
+      //    StdOut.print(item+"-");
+      // }
+      // StdOut.println("");
 
-      for (int i = 1; i < 8; i++)
-         StdOut.println("sample " + rq.sample());
+      // for (int i = 1; i < 8; i++)
+      //    StdOut.println("sample " + rq.sample());
 
 
       // for (int i = 1; i < 8; i++)
