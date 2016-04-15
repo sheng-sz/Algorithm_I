@@ -96,7 +96,7 @@ public class Board {
         while (true) {
             r2 = StdRandom.uniform(dim);
             c2 = StdRandom.uniform(dim);
-            if (!(r2 == r0 && c2 == r0)) break;
+            if ((!(r2 == r0 && c2 == r0)) && (!(r2 == r1 && c2 == c1))) break;
         }
         int temp1 = blocks[r1][c1];
 
