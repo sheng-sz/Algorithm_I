@@ -1,1 +1,1 @@
-# Princeton_Algorithm_I
+# Algorithm_I
