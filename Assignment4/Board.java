@@ -9,8 +9,8 @@ public class Board {
     // (where blocks[i][j] = block in row i, column j)
     private final int[][] blocks;
     private final int dim;
-    private  int r0;
-    private  int c0;
+    private int r0;
+    private int c0;
 
     public Board(int[][] blocks) {
         dim = blocks[0].length;
@@ -21,6 +21,8 @@ public class Board {
                 this.blocks[r][c] = blocks[r][c];
             }
         }
+
+        // this.blocks = blocks;
 
         outerloop:
         for (int r = 0; r < dim; r++) {
@@ -87,17 +89,29 @@ public class Board {
     }               
     // a board that is obtained by exchanging any pair of blocks
     public Board twin() {
-        int r1, c1, r2, c2;
-        while (true) {
-            r1 = StdRandom.uniform(dim);
-            c1 = StdRandom.uniform(dim);
-            if (!(r1 == r0 && c1 == c0)) break;
-        }
-        while (true) {
-            r2 = StdRandom.uniform(dim);
-            c2 = StdRandom.uniform(dim);
-            if ((!(r2 == r0 && c2 == r0)) && (!(r2 == r1 && c2 == c1))) break;
-        }
+        // int r1, c1, r2, c2;
+        // while (true) {
+        //     r1 = 
+        //     c1 = StdRandom.uniform(dim);
+        //     if (r1 != r0 && c1 != c0) break;
+        // }
+        // while (true) {
+        //     r2 = StdRandom.uniform(dim);
+        //     c2 = StdRandom.uniform(dim);
+        //     if ((r2 != r0 && c2 != c0) && (r2 != r1 && c2 != c1)) break;
+        // }
+        int rand1, rand2, r1, r2, c1, c2;
+
+        do  {
+            rand1 = StdRandom.uniform(dim*dim);
+            rand2 = StdRandom.uniform(dim*dim);
+            r1 = (rand1 - rand1 % dim)/dim;
+            c1 = rand1 % dim;
+            r2 = (rand2 - rand2 % dim)/dim;
+            c2 = rand2 % dim;
+            // StdOut.println("iter"+r1+""+c1+""+r2+""+c2);
+        } while ( (r1 == r0 && c1 == c0) || (r2 == r0 && c2 == c0) || (r1 == r2 && c1 == c2) );
+
         int temp1 = blocks[r1][c1];
 
         int[][] newBlocks = new int[dim][dim];
@@ -117,6 +131,7 @@ public class Board {
         if (y == null) return false;
         if (y.getClass() != this.getClass()) return false;
         Board that = (Board) y;
+        if (that.dimension() != this.dimension()) return false;
         return equal2DArray(that.blocks);
     }
 
@@ -185,13 +200,11 @@ public class Board {
     // string representation of this board (in the output format specified below)
     public String toString() {
         String outstring = new String();
-        outstring += dimension() + "\n";
-        for (int[] row : blocks) {
-            outstring += " ";
-            for (int item : row) {
-                outstring += item + "  ";
-            }
-            outstring += "\n";
+        outstring += dimension() + "\n ";
+        for (int i = 0; i < dim*dim; i++) {
+            outstring += blocks[(i - i % dim)/dim][i % dim];
+            if ((i+1) % dim == 0) outstring += " \n ";
+            else outstring += "  ";
         }
         return outstring;
     }
@@ -208,12 +221,14 @@ public class Board {
             for (int j = 0; j < N; j++)
                 blocks[i][j] = in.readInt();
         Board initial = new Board(blocks);
+        StdOut.println("initial");
         StdOut.println(initial.toString());
         // StdOut.println(initial.isGoal());
 
         // Board x = initial.twin();
 
         // StdOut.println(x.toString());
+        StdOut.println("neighbors");
         Iterable<Board> my_nb = initial.neighbors();
         for (Board bd: my_nb) {
             StdOut.println(bd.toString());
@@ -223,7 +238,27 @@ public class Board {
         Board x = new Board(blocks);
         StdOut.println(initial.equals(x));
         StdOut.println(initial.equals(x.twin()));
+        StdOut.println("test manhattan");
+        StdOut.println(initial.manhattan());
+        StdOut.println("test hamming");
+        StdOut.println(initial.hamming());
+
+        StdOut.println("test twin");
+        StdOut.println(initial.r0+""+initial.c0);
+        StdOut.println(initial.twin());
+        StdOut.println(initial.twin());
+        StdOut.println(initial.twin());
+        StdOut.println(initial.twin());
+        StdOut.println(initial.twin());
+        StdOut.println(initial.twin());
+
+        StdOut.println("Immutable");
         StdOut.println(initial.manhattan());
 
+        int xx = 1;
+        for (int i = 0; i < N; i++)
+            for (int j = 0; j < N; j++)
+                blocks[i][j] = xx++;
+        StdOut.println(initial.manhattan());
     }
 }
