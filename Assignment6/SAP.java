@@ -2,7 +2,7 @@
 * @Author: S.Zhang
 * @Date:   2016-04-23 20:32:24
 * @Last Modified by:   S.Zhang
-* @Last Modified time: 2016-04-24 15:05:33
+* @Last Modified time: 2016-04-25 21:47:51
 */
 
 import edu.princeton.cs.algs4.BreadthFirstDirectedPaths;
@@ -22,7 +22,26 @@ public class SAP {
         if (G == null) {
             throw new NullPointerException();
         }
+
+
+
+        // IllegalArgumentException
         myGraph = new Digraph(G);
+    }
+
+    // private boolean iterableEmpty(Iterable<Integer> i) {
+    //     int size = 0;
+    //     for (int ii : i) {
+    //         size++;
+    //     }
+    //     return size == 0;
+    // }
+
+    private int searchRoot(Digraph G) {
+        int numRoot = 0;
+        
+        
+        return numRoot;
     }
 
     private void searchAncestor(BreadthFirstDirectedPaths bfs, int vertex) {
@@ -63,6 +82,8 @@ public class SAP {
     }
 
     private void searchAncestor(BreadthFirstDirectedPaths bfs, Iterable<Integer> vertex) {
+        // StdOut.println("debug"+vertex);
+
         Queue<Integer> qVertex = new Queue<Integer>();
         boolean[] marked;
         int[] distTo;
@@ -72,26 +93,26 @@ public class SAP {
 
         for (int v : vertex) {
             qVertex.enqueue(v);
+            // StdOut.println("en q" + v);
             marked[v] = true;
             distTo[v] = 0; 
         }
 
         while (!qVertex.isEmpty()) {
             int currentVertex = qVertex.dequeue();
-            // StdOut.println("de q w" + currentW);
+            // StdOut.println("de q" + currentVertex);
             if (bfs.hasPathTo(currentVertex)) {
                 int tempDist = distTo[currentVertex] + bfs.distTo(currentVertex);
                 if (length > tempDist) {
                     length = tempDist;
                     ancestor = currentVertex;
                     // StdOut.println("ancestor = " + ancestor);
-
                 }
             }
             for (int adj: myGraph.adj(currentVertex)) {
                 if (marked[adj] != true) {
                     qVertex.enqueue(adj);
-                    // StdOut.println("en q w" + adjW);
+                    // StdOut.println("en q" + adj);
                     marked[adj] = true;
                     distTo[adj] = distTo[currentVertex] + 1;
                 }
@@ -104,7 +125,6 @@ public class SAP {
         ancestor = -1;
 
         BreadthFirstDirectedPaths bfsV = new BreadthFirstDirectedPaths(myGraph, v);
-        Queue<Integer> qW = new Queue<Integer>();
         searchAncestor(bfsV, w);
 
         BreadthFirstDirectedPaths bfsW = new BreadthFirstDirectedPaths(myGraph, w);
@@ -139,7 +159,7 @@ public class SAP {
         searchAncestor(bfsV, w);
 
         BreadthFirstDirectedPaths bfsW = new BreadthFirstDirectedPaths(myGraph, w);
-        searchAncestor(bfsV, v);
+        searchAncestor(bfsW, v);
 
     }
 
@@ -148,6 +168,7 @@ public class SAP {
     public int length(Iterable<Integer> v, Iterable<Integer> w) {
         if (v == null || w == null)
             throw new NullPointerException();
+        // if (iterableEmpty(v) || iterableEmpty(w))
         for (int vi: v) {
             if (vi >= myGraph.V()) {
                 throw new IndexOutOfBoundsException();
@@ -182,6 +203,10 @@ public class SAP {
 
     // do unit testing of this class
     public static void main(String[] args) {
+        // int[] x = {1,2,3};
+        // for (int i : x) {
+        //     StdOut.println(i);
+        // }
         In in = new In(args[0]);
         Digraph G = new Digraph(in);
         SAP sap = new SAP(G);
